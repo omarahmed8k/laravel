@@ -2,28 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\userController;
 
 class userController extends Controller
 {
-    public function index(){
-        return "Index";
-    }
-    public function create(){
-        return "create";
-    }
-    public function show($id)
+    protected $users =  [
+        ['id' => 1, 'name' => 'Mohamed', 'email' => 'mohamed@gmail.com'],
+        ['id' => 2, 'name' => 'Ahmed', 'email' => 'ahmed@gmail.com'],
+        ['id' => 3, 'name' => 'Kareem', 'email' => 'kareem@gmail.com'],
+    ];
+
+    public function index()
     {
-        return 'show '. $id;
+        return View("index");
     }
-    public function edit($id)
+    public function create()
     {
-        return 'edit '. $id;
+        return View("create");
     }
-    public function delete($id)
+    public function show()
     {
-        return 'delete '. $id;
+        return View("show");
+    }
+    public function edit()
+    {
+        return View("edit");
     }
 }

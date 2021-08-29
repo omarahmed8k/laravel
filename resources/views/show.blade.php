@@ -1,36 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show</title>
-</head>
+@section('title')
+ITI
+@endsection
 
-<body>
+@section('content')
 
-    <table>
-        <thead>
-            <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Password</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Omar Abdelrahman</h1>
 
-</body>
+            <table class="table table-striped table-bordered mt-5">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Omar Abdelrahman</td>
+                        <td>omarahmed8k@gmail.com</td>
+                        <td></button> <button type="button" class="btn btn-success"><a class="text-white" href="{{ url('edit') }}">Edit</a></button> <button type="button" class="btn btn-danger">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-</html>
+@endsection
