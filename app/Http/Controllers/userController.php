@@ -2,30 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Users;
 
-class userController extends Controller
+class UserController extends Controller
 {
-    protected $users =  [
-        ['id' => 1, 'name' => 'Mohamed', 'email' => 'mohamed@gmail.com'],
-        ['id' => 2, 'name' => 'Ahmed', 'email' => 'ahmed@gmail.com'],
-        ['id' => 3, 'name' => 'Kareem', 'email' => 'kareem@gmail.com'],
-    ];
-
     public function index()
     {
-        return View("index");
+        $all = Users::all();
+        return view('index', compact('all'));
     }
+
     public function create()
     {
-        return View("create");
+        return view('create');
     }
-    public function show()
+
+    public function store(Request $request)
     {
-        return View("show");
+        $data = $request->only('name', 'email', 'password');
+        Users::create($data);
+        return redirect(route('users.index'));
     }
-    public function edit()
+
+    public function show($id)
     {
-        return View("edit");
+        $show = Users::find($id);
+        return view('show', compact('show'));
+    }
+
+    public function edit($id)
+    {
+        $edit = Users::find($id);
+        return view('edit', compact('edit'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        Users::find($id)->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+        ]);
+
+        return  redirect(route('users.index', ['users' => $id]));
+    }
+
+
+    public function destroy($id)
+    {
+        Users::find($id)->delete();
+        return redirect(route('users.index'));
     }
 }
