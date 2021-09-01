@@ -34,6 +34,9 @@
         @endforeach
 
       </table>
+
+      {{ $all->links() }}
+
     </div>
   </div>
 </div>
